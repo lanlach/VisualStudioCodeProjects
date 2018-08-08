@@ -46,7 +46,7 @@ param(
 	
 	[Parameter(Position=2, Mandatory=$false, HelpMessage="Installation Arguments",
 	ValueFromPipelineByPropertyName=$true,ValueFromPipeline=$true)]
-	[System.String]$Arguments
+	[System.String[]]$Arguments
 )
 begin
 {

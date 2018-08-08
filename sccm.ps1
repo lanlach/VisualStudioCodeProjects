@@ -38,6 +38,13 @@ function Main {
 	
 	# Hide Task Sequence UI
     $TSProgressUI.CloseProgressDialog()
+
+    #Authenticate the user
+    Get-Creds 
+
+    $FlagEnableTPM=$false
+
+    #Dell only 
     
     
 }
