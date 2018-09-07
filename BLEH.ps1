@@ -10,13 +10,15 @@ $ComputerModelNumber=([regex]::match($ComputerModel,"\s(\w+)$")).Groups[1].Value
 Write-Output $ComputerModelNumber
 Write-Output $ComputerModelNumber.length
 # $BiosVersion=Get-ChildItem $ComputerModel\* -Verbose | Select -ExpandProperty Name| %{[regex]::match($_, "$ComputerModelNumber(.*?)(?:.exe)").Groups[1].Value}
-$BiosVersion= Get-ChildItem $ComputerModel\* -Verbose | Select -ExpandProperty Name| %{[regex]::match($_, "$ComputerModelNumber(?:[-*_*])?(.*?).exe").Groups[1].Value}
+[System.Collections.ArrayList]$BiosVersion= Get-ChildItem $ComputerModel\* -Verbose | Select -ExpandProperty Name| %{[regex]::match($_, "$ComputerModelNumber(?:[-*_*])?(.*?).exe").Groups[1].Value}
 #"^(?:[^'$ComputerModelNumber']+){1}(.*?).txt").Groups[1].Value}
 #included hypen and did not get _2.3.2 "$ComputerModelNumber([^_]*)_?.exe"
 #$_, "^(?:[^_]*_){2}(.*?).txt").Groups[1].Value}
 if ($BiosVersion.length-gt 1) {
 foreach($element in $BiosVersion){ if ($element -gt $BiosCurrentVersion){Write-Output $element}
-if ([string]::IsNullOrEmpty($element)) {Write-Output "IS null"}
+if ([string]::IsNullOrEmpty($element)) {Write-Output "IS null"
+$BiosVersion.remove($element)
+}
 #($element -eq "")
 
 }
