@@ -24,4 +24,5 @@ if ([string]::IsNullOrEmpty($element)) {Write-Output "IS null"}
 Write-Output $BiosVersion.length
 #if( %{$BiosVersion -ne $null}) {Write-Output "IS not null"}
 Write-Output $BiosVersion
+Write-Output $BiosVersion.IsFixedSize
 #Write-Output $BiosVersion.gettype()
