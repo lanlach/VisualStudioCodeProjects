@@ -20,7 +20,7 @@ if ([string]::IsNullOrEmpty($element)) {Write-Output "IS null"
 $BiosVersion.remove($element)
 }
 #($element -eq "")
-
+<#Need to figure out a way to trim the array and then order it appropriately to install the prerequisite BIOS and then mark it to install the next BIOS  #>
 }
 }
 Write-Output $BiosVersion.length
